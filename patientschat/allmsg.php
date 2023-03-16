@@ -1,0 +1,2 @@
+<div><i>L'utilisateur <b>Djihad</b> a rejoint la session de chat.</i><br></div><div>(4:43 PM - 2022-09-07) <b>Djihad</b>: gfhdxjyu
+oiupmuyjugr<br></div><div><i>L'utilisateur <b>Djihad</b> a rejoint la session de chat.</i><br></div><div><i>L'utilisateur <b>Djihad</b> a rejoint la session de chat.</i><br></div><div><i>L'utilisateur <b>Djihad</b> a quitté la session de chat.</i><br></div>

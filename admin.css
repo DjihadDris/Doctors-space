@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo&family=Tajawal&display=swap');
+@font-face{
+	font-family: barcode;
+	src: url('../barcode.ttf');
+}
+body {
+background-color: #fbfbfb;
+font-family: 'Cairo', sans-serif !important;
+}
+button, .button {
+font-family: 'Cairo', sans-serif !important;
+outline: none !important;
+cursor: pointer !important;
+}
+a {
+font-family: 'Cairo', sans-serif !important;
+}
+input, textarea{
+font-family: 'Cairo', sans-serif !important;
+}
+select{
+font-family: 'Cairo', sans-serif !important;
+}
+h1, h2, h3, h4, h5, h6, p{
+font-family: 'Cairo', sans-serif !important;
+}
+
+.wraper_bg-bright {
+	background: white url(https://amatti.education.gov.dz/admin/img/test.jpg) no-repeat 100% center !important;
+	font-family: 'Cairo', sans-serif !important;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-top: 25px;
+}
+.pack-price1 {
+    padding: 55px 0px 25px 0px;
+    font-size: 34px;
+    line-height: 44px;
+    margin-top: 150px !important;
+    text-align: center;
+    position: relative;
+}
+.packs-cont{
+	max-width: 880px;
+    height: 230px;
+    margin: auto;
+    text-align: center;
+}
+.pack:hover{
+background-color: #2185d0;
+color: #ffffff !important;
+}
+.pack:hover .pack-h{
+color: #ffffff;
+transform: translateY(7.5px);
+}
+.pack:hover .imgradius{
+transform: translateY(7.5px);
+}
+.pack:hover .pack-info{
+transform: translateY(7.5px);
+}
+.pack-h{
+	height: 45px;
+    line-height: 45px;
+    width: 100%;
+    font-size: 18px;
+    color: #5f5f5f;
+   transition: 0.5s;
+}
+.pack-info{
+transition: 0.5s;
+}
+.imgradius{
+	width: 130px;
+	height: 130px;
+	border-radius: 50%;
+    transition: 0.5s;
+}
+.choose{
+	width: 100% !important;
+	/*height: 150% !important;*/
+	padding: 7.5px !important;
+	text-align: left !important;
+	font-size: 15px !important;
+	font-weight: 100px !important;
+}
+.choosetitle{
+	margin-top: 0 !important;
+	color:  black !important;
+}
+.choosea{
+	color: #ffffff !important;
+	margin-left: 10px !important;
+}
+.first{
+	margin: 25px !important;
+	background-color: #f2f2f3 !important;
+}
+.second{
+	margin: 10px !important;
+}
+.breadcrumb{
+	margin-left: 25px !important;
+	margin-top: 100px !important;
+}
+.choosecol{
+	margin: 15px !important;
+	border: 1px solid #f2f2f2 !important;
+	border-radius: 5px !important;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.colbackground{
+    background: linear-gradient(145deg, #f2f2f2 50%, #ffffff 50%) !important;
+}
+.profile{
+	margin-top: 100px !important;
+	margin-left: 10px !important;
+	margin-right: 10px !important;
+}
+/*.tabular{
+	margin-left: 25px !important;
+	margin-right: 25px !important;
+}
+.tab.segment{
+	margin-left: 25px !important;
+	margin-right: 25px !important;
+}*/
+.tabular.menu .item{
+	cursor: pointer !important;
+	font-family: 'Cairo', sans-serif !important;
+}
+/*.active.item{
+	color: #21ba45 !important;
+}*/
+.table-responsive{
+	overflow-x: auto !important;
+}
+.rounded-circle{
+	border-radius: 50% !important;
+}
+.barcode{
+	/*font-family: barcode;*/
+	/*font-size: 50px !important;*/
+	width: 150px !important;
+	height: 80px !important;
+}
+.badge-success {
+    color: #fff;
+    background-color: #21ba45;
+}
+.badge-danger {
+    color: #fff;
+    background-color: #ff695e;
+}
+.badge-pill {
+    padding-right: .6em;
+    padding-left: .6em;
+}
+.badge {
+    display: inline-block;
+    padding: .50em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .75rem;
+    cursor: pointer;
+}
+.attached.tab.segment{
+	transition: 0.5s !important;
+}
