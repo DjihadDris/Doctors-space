@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 16 mars 2023 à 20:08
+-- Généré le : sam. 20 mai 2023 à 23:24
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.2.0
 
@@ -54,10 +54,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`ID`, `fn`, `name`, `gender`, `dob`, `pn`, `email`, `password`, `job`, `seal`, `signature`, `status`, `del`, `code`, `address`, `wilaya`, `groupage`, `description`, `new`) VALUES
-(1, 'Dris', 'Djihad', 'Mâle', '2006-08-06', '0673730290', 'djihad139@gmail.com', '0000', 'Admin', '', '', 'Activé', '', 'ABCDEFGHIJ', 'Cité Souladj Boudjemaa, Sigus', 'Oum El Bouaghi', 'O+', '', ''),
-(2, 'Dris', 'Nacer', 'Mâle', '1969-02-23', '0672178992', 'ameda5311@gmail.com', '0000', 'Médecin', 'http://localhost/E-learning%20DZ/admin/img/no.jpg', 'http://localhost/E-learning%20DZ/admin/img/no.jpg', 'Activé', '', '', 'Sigus', 'Oum El Bouaghi', 'O+', 'Neurologie', ''),
-(6, 'Lemzerri', 'Badra', 'Femalle', '1979-08-17', '0658223161', 'badralemzerri@gmail.com', '0000', 'Pharmacien', '', '', 'Activé', '', '', 'Sigus', 'Oum El Bouaghi', 'A+', '', ''),
-(34, 'ret', 'tetr', 'Mâle', '1990-01-01', '0', 'a@a', '0000', 'Admin', '', '', 'Activé', '', 'BIKNBBBQHC', '0', 'Djelfa', 'AB+', '', '');
+(1, 'Dris', 'Djihad', 'Mâle', '2006-08-06', '0673730290', 'djihad139@gmail.com', '0000', 'Admin', '', '', 'Activé', '', 'ABCDEFGHIJ', 'Cité Souladj Boudjemaa, Sigus', 'Oum El Bouaghi', 'O+', '', '');
 
 -- --------------------------------------------------------
 
@@ -112,14 +109,6 @@ CREATE TABLE `drugs` (
   `del` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Déchargement des données de la table `drugs`
---
-
-INSERT INTO `drugs` (`ID`, `name`, `form`, `del`) VALUES
-(1, 'paracetamol', 'comprimé', ''),
-(2, 'paralgon', 'comprimé', '');
-
 -- --------------------------------------------------------
 
 --
@@ -155,9 +144,7 @@ CREATE TABLE `patients` (
 --
 
 INSERT INTO `patients` (`ID`, `fn`, `name`, `gender`, `dob`, `pn`, `email`, `password`, `mpi`, `status`, `del`, `notes`, `code`, `address`, `wilaya`, `height`, `weight`, `groupage`, `allergies`, `surgeries`, `chronic`) VALUES
-(1, 'gj', 'gj', 'Mâle', '0001-02-01', 'ujh', '', 'GCVSONWX5R', 'Badra', 'Activé', '', '', 'KTWGPZKPVX', 'iioo', 'Tamanrasset', '', '', '', '', '', ''),
-(2, 'hgk', 'jhukgjk', 'Mâle', '2000-01-01', '56', 'kjl@yh', '2NMKHB8VFD', 'Nacer', 'Activé', '', '', 'MXYSIHRQNI', '', '', '', '', '', '', '', ''),
-(3, 'hgk', 'jhukgjk', 'Mâle', '2000-01-01', '56654', 'kjl@yh', 'PI7CJBTI4Q', 'Nacer', 'Activé', '', '', 'PQOEABXHQQ', 'jmhi', 'Oum El Bouaghi', '', '', '', '', '', '');
+(1, 'Dris', 'Ouail mohamed djihad', 'Mâle', '2006-08-06', '0673730290', 'djihad139@gmail.com', '00000000', 'Nacer', 'Activé', '', '', 'ABCDEFGHIG', 'Sigus', 'Oum El Bouaghi', '175', '64', 'O+', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -176,18 +163,6 @@ CREATE TABLE `prescriptions` (
   `del` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Déchargement des données de la table `prescriptions`
---
-
-INSERT INTO `prescriptions` (`ID`, `details`, `mp`, `namepatient`, `fnpatient`, `dob`, `date`, `del`) VALUES
-(1, 'paracetamol: 4 comprimé => 3 x jour', 'Badra', 'gj', 'gj', '0001-02-01', '2022-10-20', 'yes'),
-(2, 'paracetamol: 1 comprimé => 1 x jour\nPendant 1 jour(s)\n\nparalgon: 1 comprimé => 1 x jour', 'Badra', 'gj', 'gj', '0001-02-01', '2022-10-30', 'yes'),
-(3, 'paracetamol: 1 comprimé => 1 x jour\n\nparacetamol: 1 comprimé => 1 x jour\n\nparacetamol: 1 comprimé => 1 x jour\nPendant 1 jour(s)\n\nparacetamol: 1 comprimé => 1 x jour\nPendant 1 jour(s)', 'Badra', 'gj', 'gj', '0001-02-01', '2022-10-25', 'yes'),
-(4, 'yuihgopuç_', 'Badra', 'gj', 'gj', '0001-02-01', '2022-11-05', ''),
-(5, 'paralgon: 1 comprimé => 2 x jour\nPendant 5 jour(s)', 'Nacer', 'jhukgjk', 'hgk', '2000-01-01', '2022-11-05', ''),
-(6, '- paracetamol: 1 comprimé => 2 x jour\n\n- paracetamol: 1 comprimé => 2 x jour\n\n- paralgon: 1 comprimé => 2 x jour\n   Pendant 1 jour(s)', 'Badra', 'gj', 'gj', '0001-02-01', '2022-12-26', '');
-
 -- --------------------------------------------------------
 
 --
@@ -196,55 +171,56 @@ INSERT INTO `prescriptions` (`ID`, `details`, `mp`, `namepatient`, `fnpatient`, 
 
 CREATE TABLE `specialties` (
   `ID` int(255) NOT NULL,
-  `name` varchar(250) NOT NULL
+  `namefr` varchar(250) NOT NULL,
+  `namear` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Déchargement des données de la table `specialties`
 --
 
-INSERT INTO `specialties` (`ID`, `name`) VALUES
-(3, 'Anatomie pathologique'),
-(4, 'Anesthésie - Réanimation'),
-(5, 'Biochimie'),
-(6, 'Biologie clinique'),
-(7, 'Cardiologie'),
-(8, 'Chirurgie générale'),
-(9, 'Chirurgie orthopédique'),
-(10, 'Chirurgie pédiatrique'),
-(11, 'Chirurgie urologique'),
-(12, 'Chirurgie maxillo-faciale'),
-(13, 'Chirurgie cardio-vasculaire'),
-(14, 'Dermatologie'),
-(15, 'Endocrinologie – Diabétologie'),
-(16, 'Gastro-entérologie'),
-(17, 'Gynéco-obstétrique'),
-(18, 'Hématologie'),
-(19, 'Hémobiologie'),
-(20, 'Histo-embryologie'),
-(21, 'Immunologie'),
-(22, 'Maladies infectieuses'),
-(23, 'Médecine interne'),
-(24, 'Médecine légale'),
-(25, 'Médecine nucléaire'),
-(26, 'Médecine du travail'),
-(27, 'Microbiologie'),
-(28, 'Néphrologie'),
-(29, 'Neurochirurgie'),
-(30, 'Neurologie'),
-(31, 'O.R.L.'),
-(32, 'Ophtalmologie'),
-(33, 'Oncologie médicale'),
-(34, 'Parasitologie'),
-(35, 'Pédiatrie'),
-(36, 'Pharmacologie clinique'),
-(37, 'Physiologie'),
-(38, 'Pneumo-phtisiologie'),
-(39, 'Psychiatrie'),
-(40, 'Radiologie - Imagerie'),
-(41, 'Radiothérapie'),
-(42, 'Rééducation fonctionnelle'),
-(43, 'Rhumatologie');
+INSERT INTO `specialties` (`ID`, `namefr`, `namear`) VALUES
+(3, 'Anatomie pathologique', 'التشريح المرضي'),
+(4, 'Anesthésie - Réanimation', 'التخدير - الإنعاش'),
+(5, 'Biochimie', 'الكيمياء الحيوية'),
+(6, 'Biologie clinique', 'علم الأحياء السريري'),
+(7, 'Cardiologie', 'طب القلب'),
+(8, 'Chirurgie générale', 'الجراحة العامة'),
+(9, 'Chirurgie orthopédique', 'جراحة العظام'),
+(10, 'Chirurgie pédiatrique', 'جراحة الأطفال'),
+(11, 'Chirurgie urologique', 'جراحة المسالك البولية'),
+(12, 'Chirurgie maxillo-faciale', 'جراحة الوجه والفكين'),
+(13, 'Chirurgie cardio-vasculaire', 'جراحة القلب والأوعية الدموية'),
+(14, 'Dermatologie', 'الجلد'),
+(15, 'Endocrinologie – Diabétologie', 'أمراض الغدد الصماء - السكري'),
+(16, 'Gastro-entérologie', 'أمراض الجهاز الهضمي'),
+(17, 'Gynéco-obstétrique', 'أمراض النساء والتوليد'),
+(18, 'Hématologie', 'أمراض الدم'),
+(19, 'Hémobiologie', 'بيولوجيا الدم'),
+(20, 'Histo-embryologie', 'علم الأنسجة'),
+(21, 'Immunologie', 'علم المناعة'),
+(22, 'Maladies infectieuses', 'أمراض معدية'),
+(23, 'Médecine interne', 'الطب الداخلي'),
+(24, 'Médecine légale', 'الطب الشرعي'),
+(25, 'Médecine nucléaire', 'الطب النووي'),
+(26, 'Médecine du travail', 'طب العمل'),
+(27, 'Microbiologie', 'علم الأحياء المجهري'),
+(28, 'Néphrologie', 'طب الكلى'),
+(29, 'Neurochirurgie', 'جراحة الأعصاب'),
+(30, 'Neurologie', 'علم الأعصاب'),
+(31, 'O.R.L.', 'الأنف والأذن والحنجرة'),
+(32, 'Ophtalmologie', 'طب العيون'),
+(33, 'Oncologie médicale', 'علم الأورام الطبية'),
+(34, 'Parasitologie', 'علم الطفيليات'),
+(35, 'Pédiatrie', 'طب الأطفال'),
+(36, 'Pharmacologie clinique', 'علم الصيدلة السريرية'),
+(37, 'Physiologie', 'علم وظائف الأعضاء'),
+(38, 'Pneumo-phtisiologie', 'طب الجهاز التنفسي'),
+(39, 'Psychiatrie', 'طب الجهاز التنفسي'),
+(40, 'Radiologie - Imagerie', 'الأشعة - التصوير'),
+(41, 'Radiothérapie', 'العلاج الإشعاعي'),
+(42, 'Rééducation fonctionnelle', 'إعادة التأهيل الوظيفي'),
+(43, 'Rhumatologie', 'الروماتيزم');
 
 --
 -- Index pour les tables déchargées
@@ -318,25 +294,25 @@ ALTER TABLE `chat`
 -- AUTO_INCREMENT pour la table `drugs`
 --
 ALTER TABLE `drugs`
-  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `prescriptions`
 --
 ALTER TABLE `prescriptions`
-  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `specialties`
 --
 ALTER TABLE `specialties`
-  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
