@@ -238,14 +238,14 @@ if($_COOKIE['job'] == "Admin"){
 <label>Prenom(s)/ Nom <span style="color: red;">*</span></label>
   <input required name="name" type="text" placeholder="Prenom/ Nom">
             <label style="display: <?php if($_COOKIE['job'] == "Admin"){ echo ""; }else{ echo "none"; } ?>;">Le Médecin <span style="color: red;">*</span></label>
-  <select style="display: <?php if($_COOKIE['job'] == "Admin"){ echo ""; }else{ echo "none"; } ?>;" id="mpis" required name="mpi" class="ui dropdown search">
+  <select style="display: <?php if($_COOKIE['job'] == "Admin"){ echo ""; }else{ echo "none"; } ?>;" id="mpis" required name="mpi" class="ui search dropdown add">
     <option value="">--Sélectionner--</option>
 
   </select>
         </div>
         <div class="field">
 <label>Sexe <span style="color: red;">*</span></label>
-  <select required name="gender" class="ui dropdown search">
+  <select required name="gender" class="ui search dropdown add">
     <option value="">--Sélectionner--</option>
     <option value="Mâle">Mâle</option>
     <option value="Femalle">Femalle</option>
@@ -261,7 +261,7 @@ if($_COOKIE['job'] == "Admin"){
         </div>
       <div class="field">
 <label>Groupe sanguin <span style="color: red;">*</span></label>
-<select required name="groupage" class="ui search dropdown">
+<select required name="groupage" class="ui search dropdown add">
     <option value="">--Sélectionner--</option>
     <option value="O+">O+</option>
     <option value="O-">O-</option>
@@ -273,7 +273,7 @@ if($_COOKIE['job'] == "Admin"){
     <option value="AB-">AB-</option>
   </select>
 <label>Wilaya <span style="color: red;">*</span></label>
-<select required name="wilaya" class="ui search dropdown">
+<select required name="wilaya" class="ui search dropdown add">
 <?php include('wilayas.php'); ?>
 </select>
 </div>
@@ -291,7 +291,7 @@ if($_COOKIE['job'] == "Admin"){
 
   <div <?php if($_COOKIE['job'] == "Admin"){}else{echo "hidden";} ?> class="field">
     <label>Le Médecin <span style="color: red;">*</span></label>
-          <select id="mpiname" class="ui search dropdown">
+          <select id="mpiname" class="ui search dropdown add">
     <option value="">--Sélectionner--</option>
     
   </select>
@@ -447,7 +447,8 @@ if($_COOKIE['job'] == "Admin"){
 }
 </script>
 <script>
-  $('.menu .item').tab();
+$('.ui.dropdown.add').dropdown();
+$('.menu .item').tab();
    function addnurse(){
     var code = document.getElementById('nursecode').value;
     var mpiname = document.getElementById('mpiname').value;

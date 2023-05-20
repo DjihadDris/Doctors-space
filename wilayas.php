@@ -47,3 +47,13 @@
     <option value="Ain Temouchent">Ain Temouchent</option>
     <option value="Ghardaia">Ghardaia</option>
     <option value="Relizane">Relizane</option>
+    <option value="Timimoun">Timimoun</option>
+    <option value="Bordj Badji Mokhtar">Bordj Badji Mokhtar</option>
+    <option value="Ouled Djellal">Ouled Djellal</option>
+    <option value="Béni Abbès">Béni Abbès</option>
+    <option value="In Salah">In Salah</option>
+    <option value="In Guezzam">In Guezzam</option>
+    <option value="Touggourt">Touggourt</option>
+    <option value="Djanet">Djanet</option>
+    <option value="El M'Ghair">El M'Ghair</option>
+    <option value="El Meniaa">El Meniaa</option>

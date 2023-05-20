@@ -117,6 +117,16 @@ if(isset($_COOKIE["name"])){
     <div class="item" data-value="Ain Temouchent">Ain Temouchent</div>
     <div class="item" data-value="Ghardaia">Ghardaia</div>
     <div class="item" data-value="Relizane">Relizane</div>
+    <div class="item" data-value="Timimoun">Timimoun</div>
+    <div class="item" data-value="Bordj Badji Mokhtar">Bordj Badji Mokhtar</div>
+    <div class="item" data-value="Ouled Djellal">Ouled Djellal</div>
+    <div class="item" data-value="Béni Abbès">Béni Abbès</div>
+    <div class="item" data-value="In Salah">In Salah</div>
+    <div class="item" data-value="In Guezzam">In Guezzam</div>
+    <div class="item" data-value="Touggourt">Touggourt</div>
+    <div class="item" data-value="Djanet">Djanet</div>
+    <div class="item" data-value="El M'Ghair">El M'Ghair</div>
+    <div class="item" data-value="El Meniaa">El Meniaa</div>
   </div>
 </div>
 </div>                   
@@ -130,7 +140,7 @@ if(isset($_COOKIE["name"])){
                     <div class="field">
                         <div class="ui left icon input">
                             <i class="blue inverted circular lock icon"></i>
-                            <input id="password" type="password" placeholder="Votre mot de passe" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
+                            <input id="password" type="password" placeholder="Votre mot de passe" minlength="8" minlength="16" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
                         </div>
                     </div>
                     <div class="field">
@@ -143,7 +153,7 @@ if(isset($_COOKIE["name"])){
                         <div class="field">
                             <div class="ui left icon input biarabi">
                                 <i class="pencil icon"></i>
-                                <input id="capt3" placeholder="Entrez le code" maxlength="3" autocomplete="off">
+                                <input id="capt3" placeholder="Entrez le code" minlength="3" maxlength="3" autocomplete="off">
                             </div>
                         </div>
                     </div>
@@ -345,7 +355,7 @@ var rememberi = "no";
           if(dataResult=='1'){
             location.href = "dashboard";
           }else if (dataResult=='2'){
-            alertify.error('Adresse e-mail/ numéro de téléphone/ code sanitaire invalid');
+            alertify.error('Adresse e-mail/ numéro de téléphone/ code sanitaire invalide');
 showcapt.call();
 $('.ui.form').dimmer('hide');
           }else if (dataResult=='3'){
@@ -354,7 +364,7 @@ $('.ui.form').dimmer('hide');
             }).modal('show');
             $('.ui.form').dimmer('hide');
           }else if (dataResult=='4'){
-            alertify.error('Mot de passe invalid');
+            alertify.error('Mot de passe invalide');
 showcapt.call();
 $('.ui.form').dimmer('hide');
           }else if (dataResult=='5'){
@@ -369,7 +379,7 @@ $('.ui.form').dimmer('hide');
         }
       });
     }else{
-      alertify.error("Le code est invalid");
+      alertify.error("Le code est invalide");
 $('.ui.form').dimmer('show');
 showcapt.call();
 $('.ui.form').dimmer('hide');

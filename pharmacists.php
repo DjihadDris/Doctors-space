@@ -243,7 +243,7 @@ if(isset($_GET['false'])){
 </div>
 <div class="field">
   <label>Sexe <span style="color: red !important;">*</span></label>
-  <select required name="gender" class="ui search dropdown">
+  <select required name="gender" class="ui search dropdown add">
     <option value="">--Sélectionner--</option>
     <option value="Mâle">Mâle</option>
     <option value="Femalle">Femalle</option>
@@ -251,7 +251,7 @@ if(isset($_GET['false'])){
 </div>
 <div class="field">
   <label>Groupe sanguin <span style="color: red !important;">*</span></label>
-  <select required name="groupage" class="ui search dropdown">
+  <select required name="groupage" class="ui search dropdown add">
     <option value="">--Sélectionner--</option>
     <option value="O+">O+</option>
     <option value="O-">O-</option>
@@ -277,7 +277,7 @@ if(isset($_GET['false'])){
 </div>
 <div class="field">
    <label>Wilaya <span style="color: red !important;">*</span></label>
-<select required name="wilaya" class="ui search dropdown">
+<select required name="wilaya" class="ui search dropdown add">
 <?php include('wilayas.php'); ?>
 </select>
 </div>
@@ -398,6 +398,7 @@ if(isset($_GET['false'])){
 <script type="text/javascript" src="admin.js"></script>
 <script src="svg-to-png-main/main.js"></script>
 <script>
+$('.ui.dropdown.add').dropdown();
   function getPdf(){
   svgToPngLib.svgToPng(document.querySelector('#code')).subscribe(function (value) {
   var name = document.getElementById('printprenom').innerHTML.substring(11);

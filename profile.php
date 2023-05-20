@@ -270,15 +270,15 @@ $conn->close();
   <div class="field">
     <label>Mot de passe actuel</label>
       <div class="field">
-<input type="password" required name="actualpassword" placeholder="Mot de passe actuel" maxlength="16">
+<input type="password" required name="actualpassword" placeholder="Mot de passe actuel" minlength="8" maxlength="16">
       </div>
       <label>Nouveau mot de passe</label>
       <div class="field">
-<input type="password" required name="newpassword" placeholder="Nouveau mot de passe" maxlength="16">
+<input type="password" required name="newpassword" placeholder="Nouveau mot de passe" minlength="8" maxlength="16">
       </div>
       <label>Confirmez le nouveau mot de passe</label>
       <div class="field">
-<input type="password" required name="newnewpassword" placeholder="Confirmez le nouveau mot de passe" maxlength="16">
+<input type="password" required name="newnewpassword" placeholder="Confirmez le nouveau mot de passe" minlength="8" maxlength="16">
       </div>
     </div>
  

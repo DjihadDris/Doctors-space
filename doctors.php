@@ -149,13 +149,13 @@ if(isset($_GET['false'])){
     <option value="">--Sélectionner--</option>
     <?php
     include "db.php";
-    $sql = "SELECT name FROM specialties";
+    $sql = "SELECT * FROM specialties";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
-    echo "<option value='$row[name]'>$row[name]</option>";
+    echo "<option value='$row[namefr]'>$row[namefr] ($row[namear])</option>";
   }
 } else {}
 $conn->close();
@@ -275,7 +275,7 @@ $conn->close();
 </div>
 <div class="field">
   <label>Sexe <span style="color: red !important;">*</span></label>
-  <select required name="gender" class="ui search dropdown">
+  <select required name="gender" class="ui search dropdown add">
     <option value="">--Sélectionner--</option>
     <option value="Mâle">Mâle</option>
     <option value="Femalle">Femalle</option>
@@ -283,7 +283,7 @@ $conn->close();
 </div>
 <div class="field">
   <label>Groupe sanguin <span style="color: red !important;">*</span></label>
-  <select required name="groupage" class="ui search dropdown">
+  <select required name="groupage" class="ui search dropdown add">
     <option value="">--Sélectionner--</option>
     <option value="O+">O+</option>
     <option value="O-">O-</option>
@@ -309,7 +309,7 @@ $conn->close();
 </div>
 <div class="field">
    <label>Wilaya <span style="color: red !important;">*</span></label>
-<select required name="wilaya" class="ui search dropdown">
+<select required name="wilaya" class="ui search dropdown add">
 <?php include('wilayas.php'); ?>
 </select>
 </div>
@@ -319,17 +319,17 @@ $conn->close();
 </div>
 <div class="field">
   <label>Spécialité <span style="color: red !important;">*</span></label>
-  <select required name="description" class="ui search dropdown">
+  <select required name="description" class="ui search dropdown add">
     <option value="">--Sélectionner--</option>
     <?php
     include "db.php";
-    $sql = "SELECT name FROM specialties";
+    $sql = "SELECT * FROM specialties";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
-    echo "<option value='$row[name]'>$row[name]</option>";
+    echo "<option value='$row[namefr]'>$row[namefr]</option>";
   }
 } else {}
 $conn->close();
@@ -465,6 +465,7 @@ $conn->close();
 <script type="text/javascript" src="admin.js"></script>
 <script src="svg-to-png-main/main.js"></script>
 <script>
+$('.ui.dropdown.add').dropdown();
   function getPdf(){
   svgToPngLib.svgToPng(document.querySelector('#code')).subscribe(function (value) {
   var name = document.getElementById('printprenom').innerHTML.substring(11);

@@ -20,6 +20,7 @@ $address = $_POST['address'];
 /*$password = $_POST['password'];*/
 $mpi = $_POST['mpi'];
 $n=10; 
+$p=8; 
 
 function getName($n) { 
 /* A, M, Q, W, Z */
@@ -44,13 +45,13 @@ function getName($n) {
 
 $code = getName($n);
 
-function getPass($n) { 
+function getPass($p) { 
 
     $charactersp = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
 
     $randomStringp = ""; 
 
-    for ($ip = 0; $ip < $n; $ip++) { 
+    for ($ip = 0; $ip < $p; $ip++) { 
 
         $indexp = rand(0, strlen($charactersp)-1); 
 
@@ -64,7 +65,7 @@ function getPass($n) {
 
 } 
 
-$password = getPass($n);
+$password = getPass($p);
 
 
 $sql = "INSERT INTO patients (name, fn, pn, email, gender, dob, password, mpi, status, del, notes, code, address, wilaya, height, weight, groupage, allergies, surgeries, chronic)

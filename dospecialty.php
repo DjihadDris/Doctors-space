@@ -1,11 +1,11 @@
 <?php
-
 include('db.php');
 
-$name = $_POST['name'];
+$namefr = $_POST['namefr'];
+$namear = $_POST['namear'];
 
-$sql = "INSERT INTO specialties (name)
-VALUES ('$name')";
+$sql = "INSERT INTO specialties (namefr, namear)
+VALUES ('$namefr', '$namear')";
 
 if ($conn->query($sql) === TRUE) {
   echo '200';

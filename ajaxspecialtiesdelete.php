@@ -2,9 +2,10 @@
 
 include('db.php');
 
-$name = $_POST['name'];
+$namefr = $_POST['namefr'];
+$namear = $_POST['namear'];
 
-$sql = "DELETE FROM specialties WHERE name='$name'";
+$sql = "DELETE FROM specialties WHERE namefr='$namefr' AND namear='$namear'";
 
 if ($conn->query($sql) === TRUE) {
   echo '200';

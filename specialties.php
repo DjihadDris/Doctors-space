@@ -63,23 +63,55 @@ if(isset($_GET['false'])){
 <div class="ui form">
   <div class="field">
      <div class="field">
-      <label style="color: white !important;">Nom du spécialité</label>
-       <input required id="name" type="text" placeholder="Nom du spécialité">
+      <label style="color: white !important;">Nom du spécialité en Français</label>
+       <input required id="namefr" type="text" placeholder="Nom du spécialité en Français">
+     </div>
+     <div class="field">
+      <label style="color: white !important;">Nom du spécialité en Arabe</label>
+       <input required id="namear" type="text" placeholder="Nom du spécialité en Arabe">
      </div> 
   </div>
   </div>
 </div>
       <div class="actions">
-    <center>
     <div class="ui buttons" style="width: 100% !important;">
       <button onclick="savetodata()" class="ui green left labeled icon button"><i class="plus icon"></i> Ajouter</button>
       <div class="or" data-text="ou"></div>
   <button class="ui negative right labeled icon button"><i class="close icon"></i> Fermer</button>
 </div>
-</center>
   </div>
 </div>
 
+<!-- Edit Modal -->
+<div class="ui basic modal edit" id="editmodal">
+  <i class="close icon"></i>
+  <div class="header">
+   <h3><i class="edit icon"></i> Modifier la spécialité</h3>
+  </div>
+      <div class="content">
+
+<div class="ui form">
+<input type="hidden" id="eid">
+  <div class="field">
+     <div class="field">
+      <label style="color: white !important;">Nom du spécialité en Français</label>
+       <input required id="enamefr" type="text" placeholder="Nom du spécialité en Français">
+     </div>
+     <div class="field">
+      <label style="color: white !important;">Nom du spécialité en Arabe</label>
+       <input required id="enamear" type="text" placeholder="Nom du spécialité en Arabe">
+     </div> 
+  </div>
+  </div>
+</div>
+      <div class="actions">
+    <div class="ui buttons" style="width: 100% !important;">
+      <button id="saveinfo" class="ui green left labeled icon button"><i class="edit icon"></i> Enregistrer</button>
+      <div class="or" data-text="ou"></div>
+  <button class="ui negative right labeled icon button"><i class="close icon"></i> Fermer</button>
+</div>
+  </div>
+</div>
 
 <div class="ui large breadcrumb">
 <a href="userschoose" class="ui blue tag label">Gestion des utilisateurs</a>
@@ -104,7 +136,7 @@ if(isset($_GET['false'])){
 
   <script type="text/javascript">
 function AddSpecialty(){
-$('.ui.basic.modal').modal('show');
+$('.ui.basic.modal.add').modal('show');
 }
   </script>
 
@@ -112,7 +144,8 @@ $('.ui.basic.modal').modal('show');
   <thead>
     <tr>
       <th>#</th>
-      <th>Nom</th>
+      <th>Nom en Français</th>
+      <th>Nom en Arabe</th>
       <?php
       if($_COOKIE['name'] == "Djihad"){
       ?>
@@ -133,7 +166,8 @@ $('.ui.basic.modal').modal('show');
   <thead>
     <tr>
       <th>#</th>
-      <th>Nom</th>
+      <th>Nom en Français</th>
+      <th>Nom en Arabe</th>
       <?php
       if($_COOKIE['name'] == "Djihad"){
       ?>
@@ -157,22 +191,25 @@ $('.ui.dropdown.add').dropdown();
 $('.menu .item').tab();
 
 function savetodata(){
-  var name = document.getElementById('name').value;
+  var namefr = document.getElementById('namefr').value;
+  var namear = document.getElementById('namear').value;
 
-if(name != ""){
+if(namefr != "" && namear !=""){
 
 $.ajax({
         url: "dospecialty.php",
         type: "POST",
         data: {
-          name: name
+          namefr: namefr,
+          namear: namear
         },
         cache: false,
         success: function(dataResult){
           if(dataResult=='200'){
             $('.ui.basic.modal.add').modal('hide');
             alertify.success('La spécialité a été ajouté avec succès');
-            document.getElementById('name').value = "";
+            document.getElementById('namefr').value = "";
+            document.getElementById('namear').value = "";
             $('#tabledisplay').DataTable().ajax.reload(null, false).draw(false);           
           }
           else{
@@ -182,6 +219,8 @@ $.ajax({
         }
       });
 
+}else{
+  alertify.alert('Veuillez entrer le nom de la spécialité en Français et en Arabe');
 }
 
 }
@@ -233,7 +272,8 @@ var table = $('#tabledisplay').DataTable({
         },
         "columns": [
 {"ID": "#"},
-{"name": "Nom"},
+{"namefr": "Nom en Français"},
+{"namear": "Nom en Arabe"},
 <?php
 if($_COOKIE['name'] == "Djihad"){
 ?>
@@ -250,18 +290,29 @@ if($_COOKIE['name'] == "Djihad"){
 }
           });
 
+table.on('click', '.edit', function (e) {
+  var tr = $(this).closest('tr');
+  var data = table.row(tr).data();
+
+$('.ui.modal.edit').modal('show');
+$('#eid').val(data[0]);
+$('#enamefr').val(data[1]);
+$('#enamear').val(data[2]);
+
+});
 
 table.on('click', '.delete', function (e) {
   var tr = $(this).closest('tr');
   var data = table.row(tr).data();
 
-alertify.confirm("Voulez-vous vraiment supprimer cette spécialité:"+" "+data[1]+"?",
+alertify.confirm("Voulez-vous vraiment supprimer cette spécialité:"+" "+data[1]+" ("+data[2]+")?",
   function(){
 $.ajax({
         url: "ajaxspecialtiesdelete.php",
         type: "POST",
         data: {
-          name: data[1]
+          namefr: data[1],
+          namear: data[2],
         },
         cache: false,
         success: function(dataResult){
@@ -283,6 +334,34 @@ $.ajax({
 });
 
 }
+
+$(document).ready(function() {
+
+$(document).on("click", "#saveinfo", function() { 
+    $.ajax({
+      url: "ajaxspecialtiessupdate.php",
+      type: "POST",
+      cache: false,
+      data:{
+        id: $('#eid').val(),
+        namefr: $('#enamefr').val(),
+        namear: $('#enamear').val()
+      },
+      success: function(dataResult){
+        var dataResult = JSON.parse(dataResult);
+        if(dataResult.statusCode==200){
+          $('#editmodal').modal().hide();
+          alertify.success('Modifications enregistrées avec succès');
+          $('#tabledisplay').DataTable().ajax.reload(null, false).draw(false);
+        }else{
+          alertify.error('Erreur...');
+          $('#tabledisplay').DataTable().ajax.reload(null, false).draw(false);
+        }
+      }
+    });
+  }); 
+
+});
 </script>
 </body>
 </html>

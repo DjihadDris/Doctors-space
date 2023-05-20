@@ -14,11 +14,11 @@ $sql = "SELECT * FROM specialties";
     while($rowo = $resulto->fetch_assoc()) {   
       if("$row[ID]" == "$rowo[ID]"){
 ?>
-["<?php echo "$row[ID]"; ?>", "<?php echo "$row[name]"; ?>"<?php if($_COOKIE['name'] == "Djihad"){ ?>, "<button class='ui negative left labeled icon button delete'><i class='trash icon'></i> Supprimer</button>"<?php } ?>]
+["<?php echo "$row[ID]"; ?>", "<?php echo "$row[namefr]"; ?>", "<?php echo "$row[namear]"; ?>"<?php if($_COOKIE['name'] == "Djihad"){ ?>, "<div class='ui buttons'><button class='ui button positive left labeled icon edit'><i class='edit icon'></i> Éditer</button><div class='or' data-text='ou'></div><button class='ui negative right labeled icon button delete'><i class='trash icon'></i> Supprimer</button></div>"<?php } ?>]
 <?php
 }else{
 ?>
-["<?php echo "$row[ID]"; ?>", "<?php echo "$row[name]"; ?>"<?php if($_COOKIE['name'] == "Djihad"){ ?>, "<button class='ui negative left labeled icon button delete'><i class='trash icon'></i> Supprimer</button>"<?php } ?>],
+["<?php echo "$row[ID]"; ?>", "<?php echo "$row[namefr]"; ?>", "<?php echo "$row[namear]"; ?>"<?php if($_COOKIE['name'] == "Djihad"){ ?>, "<div class='ui buttons'><button class='ui button positive left labeled icon edit'><i class='edit icon'></i> Éditer</button><div class='or' data-text='ou'></div><button class='ui negative right labeled icon button delete'><i class='trash icon'></i> Supprimer</button></div>"<?php } ?>],
 <?php
 }
 }}else{

@@ -53,11 +53,11 @@ var dt = document.getElementById('selecteddate').value;
  newWin.print();
         }
     </script>
-    <script>
+<script>
 alertify.defaults.glossary.title = 'Ministère de la Santé';
 alertify.defaults.glossary.ok = 'Oui';
 alertify.defaults.glossary.cancel = 'Non';
-    </script>
+</script>
     <style type="text/css">
 .ui.search.dropdown.selection{
   width: 100% !important;
@@ -457,12 +457,12 @@ if(isset($_GET['false'])){
 </div>
 <br><br>
 
-  <script type="text/javascript">
+<script type="text/javascript">
 function ShowList(){
 $('.ui.basic.modal.list').modal('show');
 getliste.call();
 }
-  </script>
+</script>
 
 <table class="ui celled striped selectable table" id="tabledisplay" style="width:100%">
   <thead>
