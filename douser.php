@@ -1,5 +1,8 @@
 <?php
-
+use PHPMailer\PHPMailer\PHPMailer;
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
+require 'PHPMailer/Exception.php';
 include('db.php');
 
 $from = $_POST['from'];
@@ -75,10 +78,34 @@ $sql = "INSERT INTO admins (name, fn, pn, email, gender, dob, job, password, sea
 VALUES ('$name', '$fn', '$pn', '$email', '$gender', '$dob', '$job', '$password', '$seal', '$signature', 'Activé', '', '$code', '$address', '$wilaya', '$groupage', '$description', '$new')";
 
 if ($conn->query($sql) === TRUE) {
-$msg = "Bonjour, $name \n Votre mot de passe est: $password";
-$msg = wordwrap($msg,70);
-mail($email,"Ministère de la Santé",$msg);
-  header('Location: '.$from.'?true');
+
+    try {
+        $mail = new PHPMailer(true);
+    
+        // SMTP configuration
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';  // Your SMTP server hostname
+        $mail->SMTPAuth = true;
+        $mail->Username = 'djihad139@gmail.com'; // Your SMTP username
+        $mail->Password = 'acxvkdwyxkityhfc'; // Your SMTP password
+        $mail->SMTPSecure = 'ssl'; // Enable encryption, 'ssl' also accepted
+        $mail->Port = 465; // TCP port to connect to
+    
+        // Sender and recipient details
+        $mail->setFrom('no-reply@medecin.epizy.com', 'Ministère de la Santé');
+        $mail->addAddress("$email", "$name");
+    
+        // Email content
+        $mail->Subject = 'Mot de passe - Ministère de la Santé';
+        $mail->Body = "$message";
+    
+        // Send the email
+        $mail->send();
+        header('Location: '.$from.'?true');
+    } catch (Exception $e) {
+        header('Location: '.$from.'?false=errordb');
+    }
+
 } else {
   header('Location: '.$from.'?false=errordb');
 }

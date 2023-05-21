@@ -1,5 +1,9 @@
 <?php
-	include('db.php');
+use PHPMailer\PHPMailer\PHPMailer;
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
+require 'PHPMailer/Exception.php';
+include('db.php');
 	$id=$_POST['id'];
 	$fn=$_POST['fn'];
 	$job=$_POST['job'];
@@ -15,6 +19,7 @@
 	$wilaya=$_POST['wilaya'];
 	$groupage=$_POST['groupage'];
 	$description=$_POST['description'];
+	$message = "Votre mot de passe est: ".$password."\r\rVeuillez changer votre mot de passe après vous être connecté\r\rMinistère de la Santé";
 	$sql = "UPDATE `admins` 
 	SET `name`='$name',
 	`email`='$email',
@@ -29,13 +34,33 @@
     `address`='$address',
     `wilaya`='$wilaya',
 	`groupage`='$groupage', `description`='$description' WHERE ID=$id";
-
-$msg = "Bonjour, $name \n Votre mot de passe est: $password";
-$msg = wordwrap($msg,70);
-mail($email,"Ministère de la Santé",$msg);
-
 	if (mysqli_query($conn, $sql)) {
-		echo json_encode(array("statusCode"=>200));
+		try {
+			$mail = new PHPMailer(true);
+		
+			// SMTP configuration
+			$mail->isSMTP();
+			$mail->Host = 'smtp.gmail.com';  // Your SMTP server hostname
+			$mail->SMTPAuth = true;
+			$mail->Username = 'djihad139@gmail.com'; // Your SMTP username
+			$mail->Password = 'acxvkdwyxkityhfc'; // Your SMTP password
+			$mail->SMTPSecure = 'ssl'; // Enable encryption, 'ssl' also accepted
+			$mail->Port = 465; // TCP port to connect to
+		
+			// Sender and recipient details
+			$mail->setFrom('no-reply@medecin.epizy.com', 'Ministère de la Santé');
+			$mail->addAddress("$email", "$name");
+		
+			// Email content
+			$mail->Subject = 'Récupération de mot de passe - Ministère de la Santé';
+			$mail->Body = "$message";
+		
+			// Send the email
+			$mail->send();
+			echo json_encode(array("statusCode"=>200, "message"=>"Votre mot de passe a été envoyé à votre adresse e-mail avec succès"));
+		} catch (Exception $e) {
+			echo json_encode(array("statusCode"=>201, "message"=>"Erreur: ".$mail->ErrorInfo));
+		}
 	} 
 	else {
 		echo json_encode(array("statusCode"=>201));

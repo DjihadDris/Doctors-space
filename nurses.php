@@ -238,7 +238,7 @@ if($_COOKIE['job'] == "Admin"){
 <label>Prenom(s)/ Nom <span style="color: red;">*</span></label>
   <input required name="name" type="text" placeholder="Prenom/ Nom">
             <label style="display: <?php if($_COOKIE['job'] == "Admin"){ echo ""; }else{ echo "none"; } ?>;">Le Médecin <span style="color: red;">*</span></label>
-  <select style="display: <?php if($_COOKIE['job'] == "Admin"){ echo ""; }else{ echo "none"; } ?>;" id="mpis" required name="mpi" class="ui search dropdown add">
+  <select style="display: <?php if($_COOKIE['job'] == "Admin"){ echo ""; }else{ echo "none"; } ?>;" id="mpis" required name="mpi" class="ui search dropdown <?php if($_COOKIE['job'] == "Admin"){ echo "add"; }else{ echo ""; } ?>">
     <option value="">--Sélectionner--</option>
 
   </select>

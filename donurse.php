@@ -1,5 +1,8 @@
 <?php
-
+use PHPMailer\PHPMailer\PHPMailer;
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
+require 'PHPMailer/Exception.php';
 include('db.php');
 
 $name = $_POST['name'];
@@ -64,10 +67,34 @@ $sql = "INSERT INTO admins (name, fn, pn, email, gender, dob, job, password, sta
 VALUES ('$name', '$fn', '$pn', '$email', '$gender', '$dob', 'Infirmier', '$password', 'Activé', '', '$code', '$address', '$wilaya', '$groupage')";
 
 if ($conn->query($sql) === TRUE) {
-$msg = "Bonjour, $name \n Votre mot de passe est: $password";
-$msg = wordwrap($msg,70);
-mail($email,"Ministère de la Santé",$msg);
-  header('Location: nurses?true&name='.$name.'&mp='.$fn.'&dob='.$dob.'&pn='.$pn.'&email='.$email.'&gender='.$gender.'&groupage='.$groupage.'&address='.$address.'&wilaya='.$wilaya.'&password='.$password.'&code='.$code);
+
+    try {
+        $mail = new PHPMailer(true);
+    
+        // SMTP configuration
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';  // Your SMTP server hostname
+        $mail->SMTPAuth = true;
+        $mail->Username = 'djihad139@gmail.com'; // Your SMTP username
+        $mail->Password = 'acxvkdwyxkityhfc'; // Your SMTP password
+        $mail->SMTPSecure = 'ssl'; // Enable encryption, 'ssl' also accepted
+        $mail->Port = 465; // TCP port to connect to
+    
+        // Sender and recipient details
+        $mail->setFrom('no-reply@medecin.epizy.com', 'Ministère de la Santé');
+        $mail->addAddress("$email", "$name");
+    
+        // Email content
+        $mail->Subject = 'Mot de passe - Ministère de la Santé';
+        $mail->Body = "$message";
+    
+        // Send the email
+        $mail->send();
+        header('Location: nurses?true&name='.$name.'&mp='.$fn.'&dob='.$dob.'&pn='.$pn.'&email='.$email.'&gender='.$gender.'&groupage='.$groupage.'&address='.$address.'&wilaya='.$wilaya.'&password='.$password.'&code='.$code);
+    } catch (Exception $e) {
+        header('Location: nurses?false=errordb');
+    }
+
 } else {
   header('Location: nurses?false=errordb');
 }

@@ -362,7 +362,7 @@ if($_COOKIE['job'] == "Admin"){
 
 <div class="field">
     <label style="display: <?php if($_COOKIE['job'] == "Admin"){ echo ""; }else{ echo "none"; } ?>;">Le Médecin/ Pharmacien <span style="color: red;">*</span></label>
-  <select style="display: <?php if($_COOKIE['job'] == "Admin"){ echo ""; }else{ echo "none"; } ?>;" id="mpis" required name="mpi" class="ui search dropdown add">
+  <select style="display: <?php if($_COOKIE['job'] == "Admin"){ echo ""; }else{ echo "none"; } ?>;" id="mpis" required name="mpi" class="ui search dropdown <?php if($_COOKIE['job'] == "Admin"){ echo "add"; }else{ echo ""; } ?>">
   <option value="">--Sélectionner--</option>
   </select>
 
